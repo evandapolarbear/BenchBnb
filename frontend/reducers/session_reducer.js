@@ -5,7 +5,7 @@ import {RECEIVE_ERRORS,
         receiveCurrentUser,
         receiveErrors
       } from '../actions/session_actions';
-      
+
 import {merge} from 'lodash';
 
 const _default = {
@@ -21,7 +21,7 @@ export const SessionReducer = (oldState = _default, action) => {
       //action errors need to be placed inside curly braces to
       //make them an obj?
     case(RECEIVE_CURRENT_USER):
-      return merge({}, oldState, action.user);
+      return merge({}, oldState, {currentUser: action.user});
       //action errors need to be placed inside curly braces to
       //make them an obj?
     case(LOGOUT):

@@ -11,7 +11,7 @@ export const signUp = (form, success, error) => {
 export const logIn = (form, success, error) => {
   $.ajax({
     type: 'POST',
-    url: 'api/sessions',
+    url: 'api/session',
     data: {user: {username: form.username, password: form.password}},
     success,
     error
@@ -21,7 +21,7 @@ export const logIn = (form, success, error) => {
 export const logOut = (success, errors) => {
   $.ajax({
     type: 'DELETE',
-    url: 'api/sessions/',
+    url: 'api/session/',
     success,
     errors
   });

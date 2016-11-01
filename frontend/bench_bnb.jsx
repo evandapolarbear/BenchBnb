@@ -1,11 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {signUp, signIn, signOut} from './util/session_api_util';
+import {signUp,
+        logIn,
+        logOut
+      } from './actions/session_actions';
 import configureStore from './store/store';
 
+
 window.signUp = signUp;
-window.signIn = signIn;
-window.signOut = signOut;
+window.logIn = logIn;
+window.logOut = logOut;
 window.store = configureStore();
 
 

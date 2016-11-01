@@ -3,13 +3,14 @@ require 'byebug'
 class Api::SessionsController < ApplicationController
   def destroy
     if current_user
-      current_user.session_token = current_user.reset_session_token!
+      current_user.reset_session_token!
       session[:session_token] = nil
-      render: {}
-      #ISSUE HERE WITH RENDERING EMPTY OBJECT
-      #NEED TO GO TO VIEW/API...?
+      render "api/users/show"
     else
-      render status: 404
+      render(
+      json:["Nobody Signed in"],
+      status: 404
+      )
     end
   end
 

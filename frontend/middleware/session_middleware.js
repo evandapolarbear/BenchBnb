@@ -7,17 +7,17 @@ import {receiveCurrentUser,
       } from '../actions/session_actions';
 
 
-const SessionMiddleware = ({dispactch}) => next => action => {
-  const successCall = user => dispactch(receiveCurrentUser(user));
-  const errorCall = error => dispactch(receiveErrors(error.responseJSON));
+const SessionMiddleware = ({dispatch}) => next => action => {
+  const successCall = user => dispatch(receiveCurrentUser(action.user));
+  const errorCall = error => dispatch(receiveErrors(error.responseJSON));
 
   switch(action.type){
     case LOGIN:
       logIn(action.user, successCall, errorCall);
       return next(action);
     case LOGOUT:
-      logOut(successCall, errorCall);
-      return next(action);
+      logOut(() => next(action), errorCall);
+      break;
     case SIGNUP:
       signUp(action.user, successCall, errorCall);
       return next(action);
